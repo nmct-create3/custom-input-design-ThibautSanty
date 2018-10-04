@@ -43,6 +43,7 @@
     --color-neutral-xx-dark: #4b4c60;
     --color-neutral-xxx-dark: #35374d;
     --color-neutral-xxxx-dark: #20223a;
+    --color-theme-shadow:#81ADF0;
 
     /* Shadows */
     --shadow-color: #20223a15;
@@ -715,23 +716,210 @@ input::placeholder {
     Custom checkboxes & radio buttons
 */
 
+
+
 /* Hide the actual input with the class .o-hide-accessible */
 
 /* checked state */
-
 .c-custom-input-option-hidden:checked + .c-custom-input-option-label {
-    /*
-        Do magic stuff here, for example:
-        background-color: red;
-    */
+        /*background-color: black;*/
+        display: flex;
+        align-items: center;    
 }
 
-.c-custom-input-option-hidden:checked + .c-custom-input-option-label .c-custom-input-option__symbol {
-    /*
-        Do magic stuff here, for example:
-        fill: blue;
-    */
+
+ .c-custom-input-option__symbol{
+    display: block;
+    transition: 0.7s ease-out;
+ }
+ .c-custom-input-option-hidden:focus > .c-custom-input-option{
+    border:1px solid var(--color-alpha-xx-light);
+    box-shadow: 0 0 3px rgba(51,133,255,0.2);
+ }
+
+.c-custom-input-option{
+    display: flex;
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--color-neutral-xxx-light);
+    margin-right: 10px;
+    box-shadow:var(--inset-shadow);
+    border-radius: var(--radius);
+ }
+
+/* zet de content in checkbox in het midden */
+ .c-custom-input-option--checkbox{
+    display: flex;
+    justify-content: center;   
+    align-items: center;
+    box-shadow: var(--inset-shadow);
+ }
+ .c-custom-input-option--radio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+ }
+.c-custom-input-option--radio .c-custom-input-option__symbol{
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-alpha);
+    opacity: 0;
 }
+.c-custom-input-option-hidden:checked + .c-custom-input-option-label .c-custom-input-option__symbol{
+    opacity: 1;
+    transition: 0.7s ease-out;
+    transform: scale(1);
+ }
+.c-custom-input-option-hidden:focus + .c-custom-input-option-label .c-custom-input-option{
+    border:1px solid var(--color-alpha-x-light);
+    box-shadow: 0 0 0 3px rgba(51,133,255,0.2);
+ }
+ .c-custom-input-option-hidden:hover + .c-custom-input-option-label .c-custom-input-option{
+    border:1px solid var(--color-alpha-x-light);
+    box-shadow: 0 0 0 1px rgba(51,133,255,0.2);
+ }
+
+
+ /* zet de content in de checkbox juist en niet zichtbaar */
+ .c-custom-input-option--checkbox .c-custom-input-option__symbol {
+    width: 10px;
+    height: 10px;
+    fill: var(--color-alpha);
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+
+
+ .c-custom-input-option-label{
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+ }
+
+
+/* toggle buttons */
+
+.c-toggle__label{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0px;
+    justify-content: space-between;
+}
+.c-toggle__input{
+    width: 48px;
+    height: 24px;
+    border: 1px solid #E2E3E7;
+    background-color: #F5F6FA;
+    display: block;
+    border-radius: 24px;
+    margin:0 12px;
+    transition: 0.7s ease-out;
+}
+.c-toggle__input::after{
+    content: "";
+    width: 22px;
+    height: 22px;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.16); 
+    display: block;
+    border-radius: 50%;
+    transition: 0.7s ease-out;
+
+}
+.c-toggle__checkbox-hidden:checked + .c-toggle__label .c-toggle__input{
+    background-color: #3385FF;
+    border: 1px solid #2E77E6;
+    transition: 0.7s ease-out;
+}
+.c-toggle__checkbox-hidden:checked + .c-toggle__label .c-toggle__input::after{
+    transform: translateX(24px);
+    transition: 0.7s ease-out;
+}
+
+.c-toggle__checkbox-hidden:focus + .c-toggle__label .c-toggle__input{
+    border:1px solid var(--color-alpha-x-light);
+    box-shadow: 0 0 0 3px rgba(51,133,255,0.2);
+    transition: 0.5s ease-out;
+}
+.c-toggle__checkbox-hidden:hover + .c-toggle__label .c-toggle__input{
+    border:1px solid var(--color-alpha-x-light);
+    box-shadow: 0 0 0 2px rgba(51,133,255,0.2);
+    transition: 0.7s ease-out;
+}
+
+
+
+
+
+
+
+/* alternative toggle */
+.c-toggle__label--inverted{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 8px;
+}
+.c-toggle-list__item + .c-toggle-list__item{
+    padding: 8px 0 -16px 0;
+    margin-bottom: 0;
+    border-top: 1px solid #E2E3E7;
+}
+.c-toggle__input--alternative{
+    width: 40px;
+    height: 20px;
+    background-color: #E2E3E7;
+    border:1px solid #FFFFFF;
+    transition: 0.7s ease-out;
+}
+.c-toggle__input--alternative::after{
+    margin-top: -1.5px;
+}
+.c-toggle__checkbox-hidden:checked + .c-toggle__label .c-toggle__input--alternative{
+    background-color: #DCEAFF;
+    border: 1px solid white;
+    transition: 0.7s ease-out;
+}
+.c-toggle__checkbox-hidden:checked + .c-toggle__label .c-toggle__input--alternative::after{
+    transform: translateX(24px);
+    transition: 0.7s ease-out;
+    background-color: #3385FF;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.16); 
+    border:1px solid #3385FF;
+}
+
+.c-toggle__checkbox-hidden:focus + .c-toggle__label .c-toggle__input--alternative::after{
+    transition: 0.7s ease-out;
+    box-shadow: 0 0 0 3px rgba(51,133,255,0.2); 
+}
+.c-toggle__checkbox-hidden:hover + .c-toggle__label .c-toggle__input--alternative::after{
+    transition: 0.7s ease-out;
+    box-shadow: 0 0 0 3px rgba(51,133,255,0.2); 
+}
+
+
+/* select list */
+.c-custom-select__input{
+    width: 336px;
+    height: 40px;
+    border: 1px solid #E2E3E7;
+    -webkit-appearance: none;
+    padding-left: 16px;
+}
+
+.c-custom-select__symbol{
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+    width: 24px;
+    height: 24px;
+    fill: #B5B6C0;
+    pointer-events: none;
+}
+
+
 
 /*------------------------------------*\
 #UTILITIES
